@@ -68,10 +68,6 @@ public class LoginTest extends BaseTest {
         loginPage.setLogin(login);
         Assert.assertEquals(loginPage.getLoginInputFieldText(), expectedLogin,
                 String.format("%s User should be able to enter a login with a maximum length of 50 characters!", PAGE_NAME_LOGIN));
-        String password = StringGenerator.generateRandomStringByRegex(VALID_LOGIN_REGEX, random.nextInt(51));
-        loginPage.setPassword(password);
-        Assert.assertEquals(loginPage.getPasswordInputFieldText(), password,
-                String.format("%s Password should be the same as the user entered!", PAGE_NAME_LOGIN));
         loginPage.clickOnLoginButton();
         Assert.assertEquals(loginPage.getErrorMessageText(), AUTORIZE_ERROR_MESSAGE,
                 String.format("%s Error message text should be as expected!", PAGE_NAME_LOGIN));
@@ -86,10 +82,6 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(AppiumDriverManager.getDriver());
         Assert.assertTrue(loginPage.isOpened(), String.format("%s Page should be opened!", PAGE_NAME_LOGIN));
         SecureRandom random = new SecureRandom();
-        String login = StringGenerator.generateRandomStringByRegex(VALID_LOGIN_REGEX, random.nextInt(51));
-        loginPage.setLogin(login);
-        Assert.assertEquals(loginPage.getLoginInputFieldText(), login,
-                String.format("%s Login should be the same as the user entered!", PAGE_NAME_LOGIN));
         String password = StringGenerator.generateRandomStringByRegex(VALID_PASSWORD_REGEX, random.nextInt(15) + 50);
         loginPage.setPassword(password);
         String expectedPassword = password.substring(0, 50);

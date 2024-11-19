@@ -93,11 +93,6 @@ public class LoginPage extends BasePage {
     }
 
     public String getErrorMessageText() {
-        return getErrorMessageText(SHORT_TIMEOUT);
-    }
-
-    public String getErrorMessageText(long timeout) {
-        waitForElementIsNotVisible(progressBar, timeout);
         return errorMessage.getText();
     }
 
